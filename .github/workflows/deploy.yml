@@ -1,0 +1,17 @@
+name: Deploy to Server
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH and Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: hopuser
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/hop-projects
+            git pull origin main
