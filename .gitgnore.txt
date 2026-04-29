@@ -1,3 +1,0 @@
-.hop/
-*.log
-.DS_Store
